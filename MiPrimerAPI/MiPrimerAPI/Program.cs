@@ -15,6 +15,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddScoped<IProductInterface, ProductRepositories>();
 builder.Services.AddScoped<ProductService>();
+builder.Services.AddHttpClient<ExternalApiService>();
 
 
 var app = builder.Build();
