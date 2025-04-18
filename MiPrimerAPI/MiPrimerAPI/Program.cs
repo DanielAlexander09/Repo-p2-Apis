@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using MiPrimerAPI.Data;
+using MiPrimerAPI.Repositories;
+using MiPrimerAPI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +13,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<AppDbContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddScoped<IProductInterface, ProductRepositories>();
+builder.Services.AddScoped<ProductService>();
 
 
 var app = builder.Build();
